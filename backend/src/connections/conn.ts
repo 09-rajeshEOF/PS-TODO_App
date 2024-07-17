@@ -12,3 +12,4 @@ const conn = async(req:Request,res:Response) => {
     );
    }
 }
+export default conn;
