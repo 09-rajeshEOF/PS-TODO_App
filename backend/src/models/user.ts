@@ -32,7 +32,7 @@ const userSchema: Schema = new Schema({
         },
         message : 'Password must contain at least 8 characters, including uppercase, lowercase, numbers and special characters'
     },
-    todList : {
+    todoList : {
         type : mongoose.Types.ObjectId,
         ref : 'Todo'
     }
