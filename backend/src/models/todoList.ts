@@ -7,7 +7,7 @@ interface TodoApp extends Document {
     status : 'pending' | 'completed';
     duedate ?: Date;
     priority ?: 'high' | 'medium' | 'low';
-    user: mongoose.Types.ObjectId;
+    user : mongoose.Types.ObjectId;
 }
 const TodoListSchema : Schema = new Schema({
     title : {type:String,required:true},
@@ -16,12 +16,11 @@ const TodoListSchema : Schema = new Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
             required: true,
-    
-        }
-    ,
+        },
     status : {type : String,enum:['pending','completed'],default:'pending'},
-    dueDate: { type: Date }, 
-    priority: { type: String, enum: ['high', 'medium', 'low'] },
+    dueDate: {type: Date }, 
+    priority: {type: String, enum: ['high', 'medium', 'low'] },
 })
+TodoListSchema.index({ title: 1, user: 1 }, { unique: true });
 const Todo = mongoose.model<TodoApp>('Todo',TodoListSchema);
 export default Todo;
