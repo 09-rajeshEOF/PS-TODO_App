@@ -1,14 +1,11 @@
 import mongoose,{Schema,Document} from 'mongoose';
-
-//for Type Saftey
 interface User extends Document {
     id : string;
     username : string;
     email : string;
     password : string;
-
+    todoList: mongoose.Types.ObjectId[]; 
 }
-
 const userSchema: Schema = new Schema({
    username:{type : 'String',
     required: true,
@@ -32,13 +29,11 @@ const userSchema: Schema = new Schema({
         },
         message : 'Password must contain at least 8 characters, including uppercase, lowercase, numbers and special characters'
     },
+   },
     todoList : {
-        type : mongoose.Types.ObjectId,
-        ref : 'Todo'
-    }
-   }
+        type :[ {type : mongoose.Types.ObjectId,ref : 'Todo'}],
+        // default : []
+    } 
 })
-
 const Users = mongoose.model<User>('User',userSchema);
-
 export default Users;
