@@ -9,7 +9,7 @@ import { SECRET_KEY } from "../config";
 const listRouter = Router(); 
 listRouter.post('/addTasks', verifyToken, async (req: Request, res: Response) => {  
   try {  
-    const { title, description } = req.body;  
+    const { title, description,dueDate,priority } = req.body;  
     const user = (req as any).user;  
 
     if (!user) {  
@@ -22,7 +22,7 @@ listRouter.post('/addTasks', verifyToken, async (req: Request, res: Response) =>
       return res.status(400).json({ message: 'Task already exists' });  
     }  
 
-    const todo = new Todo({ title, description, user: user._id });  
+    const todo = new Todo({ title, description,dueDate,priority ,user: user._id });  
     await todo.save();  
     res.status(200).json(todo);  
 
