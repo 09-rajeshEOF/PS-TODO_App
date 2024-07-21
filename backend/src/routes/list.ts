@@ -5,16 +5,8 @@ import Users from "../models/user";
 import Todo from "../models/todoList";
 import jwt ,{Jwt} from "jsonwebtoken";
 import { SECRET_KEY } from "../config";
-// import { promisify } from 'util';
-// const verifyJwt = promisify(jwt.verify);
 
-
-// interface CustomRequest extends Request {
-//   token?: string;
-// }
-
-const listRouter = Router();
- 
+const listRouter = Router(); 
 listRouter.post('/addTasks', verifyToken, async (req: Request, res: Response) => {  
   try {  
     const { title, description } = req.body;  
@@ -36,6 +28,7 @@ listRouter.post('/addTasks', verifyToken, async (req: Request, res: Response) =>
 
     user.todoList.push(todo._id as mongoose.Types.ObjectId);  
     await user.save();  
+    console.log('add task success!')
   } catch (error) {  
     return res.status(401).json({ message: 'Got Invalid token ' });  
   }  
@@ -114,6 +107,12 @@ export default listRouter;
 //get all thgefor user tasks
 //with help of user id
 //sorted order of tasks
+
+// import { promisify } from 'util';
+// const verifyJwt = promisify(jwt.verify);
+// interface CustomRequest extends Request {
+//   token?: string;
+// }
 
 // listRouter.post('/addTasks', async (req: Request, res: Response) => {
  

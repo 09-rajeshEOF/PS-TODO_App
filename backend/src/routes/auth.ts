@@ -10,12 +10,16 @@ authRouter.post('/register', async (req: Request, res: Response) => {
     try {
         const { username, email, password } = req.body;
         const user = await Users.create({ username, email, password });
-        res.status(200).json({ user });
-    } catch (error) {
-        res.status(400).json({ message: "User alreday exists" });
-    }
-})
-
+        res.status(201).json({ user });
+    } catch (error : any) {
+        console.log(error);
+        if (error.code === 11000) { // Duplicate key error
+            res.status(400).json({ message: 'User already exists' });
+          } else {
+            res.status(400).json({ message: 'Error creating user' });
+          }
+        }
+      });      
 
 //SIGN iN
 authRouter.post('/signin', async (req: Request, res: Response) => {
@@ -31,8 +35,9 @@ authRouter.post('/signin', async (req: Request, res: Response) => {
             } else {
                 const token = jwt.sign({ userId: user._id }, SECRET_KEY, { expiresIn: '3h' });
                 const others = omit(user.toObject(), 'password');
-                // res.set('Authorization', `Bearer ${token}`);
+                res.set('Authorization', `Bearer ${token}`);
                 res.json({ token, user: others });
+
                 console.log('sign in successful');
                 // console.log(token);
             }
@@ -41,5 +46,4 @@ authRouter.post('/signin', async (req: Request, res: Response) => {
         res.status(400).json({ message: "User alreday exists" });
     }
 })
-
 export default authRouter;
