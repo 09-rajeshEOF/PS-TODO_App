@@ -90,11 +90,6 @@ or
 [PostMan Documentation (Raw)](https://documenter.getpostman.com/view/34063100/2sA3kUHNYg)
 
 
-## Optimizations
-
-What optimizations did you make in your code? E.g. refactors, performance improvements, accessibility
-
-
 ## Screenshots
 
 **Register**
@@ -117,6 +112,8 @@ What optimizations did you make in your code? E.g. refactors, performance improv
 
 [![Please-Sign-up-to-continue.png](https://i.postimg.cc/FznNvdWp/Please-Sign-up-to-continue.png)](https://postimg.cc/tnPLtTHn)
 
+Note : Before Proceeding to CRUD copy the token generated in SignIn
+
 **Existing Task/Redundancy check**
 
 [![Task-Alreday-exists.png](https://i.postimg.cc/500rVPhc/Task-Alreday-exists.png)](https://postimg.cc/4KDPv14w)
@@ -137,5 +134,25 @@ What optimizations did you make in your code? E.g. refactors, performance improv
 
 [![Get-All-Task-of-User.png](https://i.postimg.cc/mg1X8zQ4/Get-All-Task-of-User.png)](https://postimg.cc/cvZBJJ9k)
 
+**MongoDB Atlas Schemas**
 
- 
+[![Screenshot-2024-07-22-000735.png](https://i.postimg.cc/MZFKQN5L/Screenshot-2024-07-22-000735.png)](https://postimg.cc/CdbgyvWC)
+[![Screenshot-2024-07-22-000801.png](https://i.postimg.cc/6qgWx4TK/Screenshot-2024-07-22-000801.png)](https://postimg.cc/n9KbvzvS)
+
+
+## Learnig Path
+
+- Setting up a Node.js project - with Express
+- Building a RESTful API
+- User Authentication and Authorization Using Jwt
+- Database Modeling with Mongoose
+- API Routing
+- API Security - with Jwt
+- API Doumentation - Postman
+- Testing and Debugging - Mocha & Chai
+
+
+## Authors
+
+- [@09-rajeshEOF](https://github.com/09-rajeshEOF)
+
